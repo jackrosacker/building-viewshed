@@ -1,3 +1,7 @@
+2024-06-04
+- wrote code through bldg footprint raster generation
+- may need to (1) normalize building height pixels to actual building heights and (2) figure out if the background of my raster is going to be an issue since it seems to be a similar color to my tallest buildings
+
 2024-06-03
 - was able to load bldg footprints to geoparquet, and had initial success with converting vector to raster
 - need to resolve:
