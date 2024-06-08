@@ -1,6 +1,6 @@
 2024-06-04
 - wrote code through bldg footprint raster generation
-- may need to (1) normalize building height pixels to actual building heights and (2) figure out if the background of my raster is going to be an issue since it seems to be a similar color to my tallest buildings
+- may need to (1) normalize building height pixels to actual building heights and (2) figure out if the background of the raster is going to be an issue since it seems to be a similar color to the tallest buildings
 
 2024-06-03
 - was able to load bldg footprints to geoparquet, and had initial success with converting vector to raster
@@ -13,6 +13,7 @@
 - [GDAL viewshed](https://gdal.org/programs/gdal_viewshed.html)
 - [Line of Sight Analysis in Python](https://spatial-dev.guru/2023/12/10/line-of-sight-analysis-in-digital-elevation-models-using-python/)
 - [Rasterize Vectors w. Rasterio](https://pygis.io/docs/e_raster_rasterize.html)
+- [Install GDAL](https://mits003.github.io/studio_null/2021/07/install-gdal-on-macos/)
 - Data
   - [NYBB](https://data.cityofnewyork.us/City-Government/Borough-Boundaries/tqmj-j8zm)
   - [Land Cover 2010]()
