@@ -1,4 +1,9 @@
 2024-06-21
+- update:
+  - Able to use subprocess.call() to call gdal
+  - Might be some weirdnes with the output files, but they look cool!
+  ![image](img/Screenshot_2024-06-21.png)
+  (done with observer z and target z each set to 200ft I think)
 - able to:
   - successfully export a sealevel-normalized bldg height raster
   - run gdal_viewshed in terminal, and output what seems like a legit viewshed
