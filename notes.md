@@ -1,3 +1,11 @@
+2024-06-21
+- able to:
+  - successfully export a sealevel-normalized bldg height raster
+  - run gdal_viewshed in terminal, and output what seems like a legit viewshed
+- struggling to:
+  - translate the gdal call into python via either (1) gdal.ViewshedGenerate() or (2) subprocess.call()
+- Next steps:
+  - plan how to best run the gdal call from within a pipeline. Maybe it doesn't need to be run from python? Could string everything together via bash or other
 2024-06-04
 - wrote code through bldg footprint raster generation
 - may need to (1) normalize building height pixels to actual building heights and (2) figure out if the background of the raster is going to be an issue since it seems to be a similar color to the tallest buildings
