@@ -1,6 +1,9 @@
 2024-06-23
 - Next Steps:
-  - tbd
+  - Work to detect intersection between viewshed and planimetric buffer
+  - Automate dataset builds
+  - Consider sources of inaccuracy - outdated buildings, railroad features that aren't actually visible (see Hudson Yards), etc.
+- Update: planimetric database - railroad features with a 10' buffer appear to align pretty closely with the bridge deck returns from the 2017 point cloud -> seems like a viable solution
 - [gdal_fillnodata](https://gdal.org/programs/gdal_fillnodata.html) works well, but leaves some artifacts from the original point cloud - typically small clusters of pixels cells with significantly higher z-values that their surroundings
 - Running gdal_viewshed on DSM derived from point cloud also appears to generally work:
   ![image](img/Screenshot_2024-06-23.png)
