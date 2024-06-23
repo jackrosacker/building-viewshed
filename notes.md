@@ -1,4 +1,7 @@
 2024-06-22
+- Next Steps:
+  1. use gdal to fill no data sections of new DSM
+  2. test viewshed on Jackson Heights DSM from pdal pipeline
 - Realizing that the viewshed as I've been running it won't work alone, because creating a viewshed requires defining the target elevation, but the target in this case is a series of continuous x/y/z coordinates without a static height to input into the viewshed command
 - Ideas: 
   1. use a line of sight algorithm like [Bresenham's Line Algorithm](https://en.wikipedia.org/wiki/Bresenham%27s_line_algorithm) or [Albert Ford's symmetric shadow casting](https://www.albertford.com/shadowcasting/) (though both would requires accounting for third dimension)
