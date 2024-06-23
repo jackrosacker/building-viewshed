@@ -1,3 +1,18 @@
+2024-06-22
+- Realizing that the viewshed as I've been running it won't work alone, because creating a viewshed requires defining the target elevation, but the target in this case is a series of continuous x/y/z coordinates without a static height to input into the viewshed command
+- Ideas: 
+  1. use a line of sight algorithm like [Bresenham's Line Algorithm](https://en.wikipedia.org/wiki/Bresenham%27s_line_algorithm) or [Albert Ford's symmetric shadow casting](https://www.albertford.com/shadowcasting/) (though both would requires accounting for third dimension)
+  2. use a first return digital surface model (DSM) instead of the DEM with building heights. This would include features such as elevated rail structures, and could be used to run the viewshed directly
+- For the DSM idea, the [Open Data links](https://data.cityofnewyork.us/City-Government/Topobathymetric-LiDAR-Data-2017-/7sc8-jtbz/about_data) for the NYC DSM are broken, but it looks like I can use pdal to generate a DSM. 
+  - Note that converting to LAZ significantly reduces size and point cloud >> TIFF processing time
+  - Resources:
+    - [pdal: Generating a DTM](https://pdal.io/en/2.6.0/workshop/generation/dtm/dtm.html)
+    - [LiDAR Data Source](https://orthos.dhses.ny.gov/?Extent=-9603624.133747088,4774299.7366908705,-7659066.134172721,5795498.434580554&Layers=07_meter_dem_index_usgs,1_meter_dem_index_fema,1_meter_dem_index_usgs,1_meter_dem_index_tidal_water,1_meter_dem_index_hydro_flattened,1_meter_dem_index_usda_utm18n,1_meter_dem_index_usda_utm17n,1_meter_dem_index_nys,2_meter_dem_index_ne_lidar,2_meter_dem_index_nys,2_meter_dem_index_fema,2_meter_dem_index_monroe_county,2_meter_dem_index_tompkins_county,2_meter_dem_index_erie_county&layerGroups=DEMIndexes,Orthoimagery&rightMenu=0#)
+    - [Blog post detailing using pdal to generate a _DSM_ specifically](https://www.simonplanzer.com/articles/lidar-chm/) with my [resulting pipeline JSON here](dsm_test.json)
+  - This route feels promising! Thoughts:
+    - Time consuming to build. Might be possible to iterate through NYC one LAS tile at a time to save disk space - for each, download, compress, create DSM, delete LAS/LAZ
+    - Since the LiDAR data is from 2017, it would likely be necessary to take the building footprint raster and burn in corrected heights where necessary onto the DSM
+
 2024-06-21
 - update:
   - Able to use subprocess.call() to call gdal
@@ -11,6 +26,7 @@
   - translate the gdal call into python via either (1) gdal.ViewshedGenerate() or (2) subprocess.call()
 - Next steps:
   - plan how to best run the gdal call from within a pipeline. Maybe it doesn't need to be run from python? Could string everything together via bash or other
+
 2024-06-04
 - wrote code through bldg footprint raster generation
 - may need to (1) normalize building height pixels to actual building heights and (2) figure out if the background of the raster is going to be an issue since it seems to be a similar color to the tallest buildings
