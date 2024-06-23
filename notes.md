@@ -1,3 +1,10 @@
+2024-06-23
+- Next Steps:
+  - tbd
+- [gdal_fillnodata](https://gdal.org/programs/gdal_fillnodata.html) works well, but leaves some artifacts from the original point cloud - typically small clusters of pixels cells with significantly higher z-values that their surroundings
+- Running gdal_viewshed on DSM derived from point cloud also appears to generally work:
+  ![image](img/Screenshot_2024-06-23.png)
+  Where blue dots are point cloud returns classified as bridge (elevated 7 train in this image), undelying image is LAZ-derived hillshade, and red tones are visible areas from a 100ft observer z-value in the center of the intersection
 2024-06-22
 - Next Steps:
   1. use gdal to fill no data sections of new DSM
