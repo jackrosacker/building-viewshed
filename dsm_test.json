@@ -1,0 +1,25 @@
+{
+
+    "pipeline":[
+        "data/NYC_Topobathymetric2017_LiDAR/15210.laz",
+        {
+            "type":"filters.reprojection",
+            "in_srs":"EPSG:2263",
+            "out_srs":"EPSG:2263"
+        },
+        {
+            "type":"filters.range",
+            "limits":"returnnumber[1:1]"
+        },
+
+        {
+            "type": "writers.gdal",
+            "filename":"data/dsm.tif",
+            "output_type":"idw",
+            "gdaldriver":"GTiff",
+            "resolution": 3,
+            "radius": 1
+
+        }
+    ]
+}
