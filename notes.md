@@ -1,3 +1,6 @@
+2024-06-24
+- [Converted viewshed raster to polygon geodataframe](https://py.geocompx.org/05-raster-vector#sec-raster-to-polygons) using rasterio, pandas, shapely
+
 2024-06-23
 - Next Steps:
   - Work to detect intersection between viewshed and planimetric buffer
