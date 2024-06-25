@@ -1,6 +1,14 @@
+2024-06-25
+- Next Steps:
+  - Split build steps out
+  - Clean up notebook to call build steps
+  - Add observer coordinates to folium map
+  - (possible) add viewshed bounding box to folium map
+- transformed vector viewshed - filtered, dissolved
+- intersected vector viewshed with rail buffer
+- plotted intersection and supporting data
 2024-06-24
 - [Converted viewshed raster to polygon geodataframe](https://py.geocompx.org/05-raster-vector#sec-raster-to-polygons) using rasterio, pandas, shapely
-
 2024-06-23
 - Next Steps:
   - Work to detect intersection between viewshed and planimetric buffer
