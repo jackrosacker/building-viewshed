@@ -17,72 +17,40 @@ MAPTILER_KEY = os.environ["MAPTILER_API"]
 
 st.title("Building Viewshed Generator")
 
-col1, col2 = st.columns([5, 1])
 
-with col1:
-    m = leafmap.Map(center=[-73.97, 40.77], zoom=10, style="positron")
-    draw_options = MapboxDrawOptions(
-        display_controls_default=False,
-        controls=MapboxDrawControls(
-            polygon=True, line_string=False, point=False, trash=True
-        ),
-    )
-    # Add 3D buildings to map
-    # m.add_basemap("Esri.WorldImagery", visible=False)
-    # source = {
-    #     "url": f"https://api.maptiler.com/tiles/v3/tiles.json?key={MAPTILER_KEY}",
-    #     "type": "vector",
-    # }
+m = leafmap.Map(center=[-73.97, 40.77], zoom=10, style="positron",)
 
-    # layer = {
-    #     "id": "3d-buildings",
-    #     "source": "openmaptiles",
-    #     "source-layer": "building",
-    #     "type": "fill-extrusion",
-    #     "min-zoom": 15,
-    #     "paint": {
-    #         "fill-extrusion-color": [
-    #             "interpolate",
-    #             ["linear"],
-    #             ["get", "render_height"],
-    #             0,
-    #             "lightgray",
-    #             200,
-    #             "royalblue",
-    #             400,
-    #             "lightblue",
-    #         ],
-    #         "fill-extrusion-height": [
-    #             "interpolate",
-    #             ["linear"],
-    #             ["zoom"],
-    #             15,
-    #             0,
-    #             16,
-    #             ["get", "render_height"],
-    #         ],
-    #         "fill-extrusion-base": [
-    #             "case",
-    #             [">=", ["get", "zoom"], 16],
-    #             ["get", "render_min_height"],
-    #             0,
-    #         ],
-    #     },
-    # }
-    # m.add_source("openmaptiles", source)
-    # m.add_layer(layer)
-    m.add_draw_control(draw_options)
-    m.to_streamlit()
+draw_options = MapboxDrawOptions(
+    display_controls_default=False,
+    controls=MapboxDrawControls(
+        polygon=True, line_string=False, point=False, trash=True
+    ),
+)
 
-with col2:
-    bldg_height_ft = st.number_input(
-        "Max. Building Height (ft)", min_value=1, max_value=1000, value=50, step=1
-    )
-    calculate_viewshed = st.button(label="Calculate Viewshed", type="primary")
+m.add_draw_control(draw_options)
 
-    st.divider()
+# m.add_marker(lng_lat=[-73.97, 40.77])
+m.to_streamlit()
 
-    start_over = st.button(label="Start Over")
+# st.divider()
+
+# col1, col2 = st.columns([3, 3])
+
+# with col1:
+#     bldg_height_ft = st.number_input(
+#         "Max. Building Height (ft)", min_value=1, max_value=1000, value=50, step=1
+#     )
+#     calculate_viewshed = st.button(label="Calculate Viewshed", type="primary")
+# with col2:
+#     start_over = st.button(label="Start Over")
+
+
+info = m.draw_feature_collection_all
+st.write(info)
+
+#st.button(label="Get Coords", on_click=get_coords())
+
+
 # mod_message = "Number to add to final roll results. Can be positive or negative, must be an integer"
 
 # num_of_dice = st.number_input(
