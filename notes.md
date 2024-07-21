@@ -1,3 +1,8 @@
+2024-07-20
+- have been spending time learning the python wrapper for maplibre via leafmap. Has clean draw controls but have run into the following issues:
+  - the library doesn't play nice with VS Code notebooks
+  - I'm struggling to retrieve the geometries of the drawn features from within Streamlit
+- found out that ipyleaflet has draw controls, and a callback/listen arg/method that can automatically add data to a feature collection as shapes are drawn. See [here](https://gis.stackexchange.com/questions/312034/ipyleaflet-draws)
 2024-06-25
 - Next Steps:
   - Split build steps out
